@@ -50,7 +50,6 @@ const Cart: React.FC<CartProps> = ({
           <span>Continue Shopping</span>
         </button>
         <h1 className="text-3xl font-playfair font-semibold text-black">Your Cart</h1>
-        <h1 className="text-3xl font-noto font-semibold text-black">Your Cart</h1>
         <button
           onClick={clearCart}
           className="text-red-500 hover:text-red-600 transition-colors duration-200"

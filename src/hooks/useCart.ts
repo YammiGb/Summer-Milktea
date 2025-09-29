@@ -1,9 +1,11 @@
 import { useState, useCallback } from 'react';
 import { CartItem, MenuItem, Variation, AddOn } from '../types';
+import { useToast } from '../contexts/ToastContext';
 
 export const useCart = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const { showToast } = useToast();
 
   const calculateItemPrice = (item: MenuItem, variation?: Variation, addOns?: AddOn[]) => {
     let price = item.basePrice;
@@ -40,13 +42,16 @@ export const useCart = () => {
       );
       
       if (existingItem) {
+        const newQuantity = existingItem.quantity + quantity;
+        showToast(`${item.name} quantity updated to ${newQuantity}`, 'success');
         return prev.map(cartItem =>
           cartItem === existingItem
-            ? { ...cartItem, quantity: cartItem.quantity + quantity }
+            ? { ...cartItem, quantity: newQuantity }
             : cartItem
         );
       } else {
         const uniqueId = `${item.id}-${variation?.id || 'default'}-${addOns?.map(a => a.id).join(',') || 'none'}`;
+        showToast(`${item.name} added to cart`, 'success');
         return [...prev, { 
           ...item,
           id: uniqueId,
@@ -57,7 +62,7 @@ export const useCart = () => {
         }];
       }
     });
-  }, []);
+  }, [showToast]);
 
   const updateQuantity = useCallback((id: string, quantity: number) => {
     if (quantity <= 0) {
@@ -65,27 +70,40 @@ export const useCart = () => {
       return;
     }
     
-    setCartItems(prev =>
-      prev.map(item =>
+    setCartItems(prev => {
+      const item = prev.find(item => item.id === id);
+      if (item) {
+        showToast(`${item.name} quantity updated to ${quantity}`, 'success');
+      }
+      return prev.map(item =>
         item.id === id ? { ...item, quantity } : item
-      )
-    );
-  }, []);
+      );
+    });
+  }, [showToast]);
 
   const removeFromCart = useCallback((id: string) => {
-    setCartItems(prev => prev.filter(item => item.id !== id));
-  }, []);
+    setCartItems(prev => {
+      const item = prev.find(item => item.id === id);
+      if (item) {
+        showToast(`${item.name} removed from cart`, 'success');
+      }
+      return prev.filter(item => item.id !== id);
+    });
+  }, [showToast]);
 
   const clearCart = useCallback(() => {
     setCartItems([]);
-  }, []);
+    showToast('Cart cleared', 'success');
+  }, [showToast]);
 
   const getTotalPrice = useCallback(() => {
     return cartItems.reduce((total, item) => total + (item.totalPrice * item.quantity), 0);
   }, [cartItems]);
 
   const getTotalItems = useCallback(() => {
-    return cartItems.reduce((total, item) => total + item.quantity, 0);
+    const total = cartItems.reduce((total, item) => total + item.quantity, 0);
+    console.log('Cart items:', cartItems.length, 'Total quantity:', total);
+    return total;
   }, [cartItems]);
 
   const openCart = useCallback(() => setIsCartOpen(true), []);

@@ -10,23 +10,23 @@ const SubNav: React.FC<SubNavProps> = ({ selectedCategory, onCategoryClick }) =>
   const { categories, loading } = useCategories();
 
   return (
-    <div className="sticky top-16 z-40 bg-white/90 backdrop-blur-md border-b border-ramen-sesame">
+    <div className="sticky top-16 z-40 bg-summer-off-white/90 backdrop-blur-md border-b border-summer-warm-gray">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center space-x-4 overflow-x-auto py-3 scrollbar-hide">
           {loading ? (
             <div className="flex space-x-4">
               {[1,2,3,4,5].map(i => (
-                <div key={i} className="h-8 w-20 bg-gray-200 rounded animate-pulse" />
+                <div key={i} className="h-8 w-20 bg-summer-warm-gray rounded animate-pulse" />
               ))}
             </div>
           ) : (
             <>
               <button
                 onClick={() => onCategoryClick('all')}
-                className={`px-3 py-1.5 rounded-full text-sm transition-colors duration-200 border ${
+                className={`px-4 py-2 rounded-full text-sm font-summer-medium transition-all duration-200 border-2 ${
                   selectedCategory === 'all'
-                    ? 'bg-ramen-red text-white border-ramen-red'
-                    : 'bg-white text-gray-700 border-gray-300 hover:border-ramen-red'
+                    ? 'bg-summer-orange text-white border-summer-orange shadow-lg'
+                    : 'bg-summer-off-white text-summer-text border-summer-warm-gray hover:border-summer-orange hover:text-summer-orange'
                 }`}
               >
                 All
@@ -35,13 +35,13 @@ const SubNav: React.FC<SubNavProps> = ({ selectedCategory, onCategoryClick }) =>
                 <button
                   key={c.id}
                   onClick={() => onCategoryClick(c.id)}
-                  className={`px-3 py-1.5 rounded-full text-sm transition-colors duration-200 border flex items-center space-x-1 ${
+                  className={`px-4 py-2 rounded-full text-sm font-summer-medium transition-all duration-200 border-2 flex items-center space-x-2 ${
                     selectedCategory === c.id
-                      ? 'bg-ramen-red text-white border-ramen-red'
-                      : 'bg-white text-gray-700 border-gray-300 hover:border-ramen-red'
+                      ? 'bg-summer-orange text-white border-summer-orange shadow-lg'
+                      : 'bg-summer-off-white text-summer-text border-summer-warm-gray hover:border-summer-orange hover:text-summer-orange'
                   }`}
                 >
-                  <span>{c.icon}</span>
+                  <span className="text-lg">{c.icon}</span>
                   <span>{c.name}</span>
                 </button>
               ))}

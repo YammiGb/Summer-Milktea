@@ -9,6 +9,7 @@ import Checkout from './components/Checkout';
 import FloatingCartButton from './components/FloatingCartButton';
 import AdminDashboard from './components/AdminDashboard';
 import { useMenu } from './hooks/useMenu';
+import { ToastProvider } from './contexts/ToastContext';
 
 function MainApp() {
   const cart = useCart();
@@ -30,7 +31,7 @@ function MainApp() {
     : menuItems.filter(item => item.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-cream-50 font-inter">
+    <div className="min-h-screen bg-summer-off-white font-summer-regular">
       <Header 
         cartItemsCount={cart.getTotalItems()}
         onCartClick={() => handleViewChange('cart')}
@@ -67,7 +68,7 @@ function MainApp() {
         />
       )}
       
-      {currentView === 'menu' && (
+      {(currentView === 'menu' || currentView === 'checkout') && (
         <FloatingCartButton 
           itemCount={cart.getTotalItems()}
           onCartClick={() => handleViewChange('cart')}
@@ -79,12 +80,14 @@ function MainApp() {
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<MainApp />} />
-        <Route path="/admin" element={<AdminDashboard />} />
-      </Routes>
-    </Router>
+    <ToastProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<MainApp />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+        </Routes>
+      </Router>
+    </ToastProvider>
   );
 }
 
