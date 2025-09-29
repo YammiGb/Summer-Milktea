@@ -68,7 +68,7 @@ function MainApp() {
         />
       )}
       
-      {(currentView === 'menu' || currentView === 'checkout') && (
+      {currentView === 'menu' && (
         <FloatingCartButton 
           itemCount={cart.getTotalItems()}
           onCartClick={() => handleViewChange('cart')}
