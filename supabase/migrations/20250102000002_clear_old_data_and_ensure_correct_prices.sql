@@ -158,3 +158,314 @@ END,
 updated_at = now()
 WHERE id IN ('milktea', 'fruit-soda', 'fruit-milk', 'ice-coffee');
 
+-- =========================
+-- Additional Food Categories
+-- =========================
+-- Insert new food categories used by the expanded menu
+INSERT INTO categories (id, name, icon, sort_order, active, created_at, updated_at) VALUES
+  ('chowfan-rice-toppings', 'Chowfan Rice Toppings', '🍚', 6, true, now(), now()),
+  ('hotdog-sandwich', 'Hotdog Sandwich', '🌭', 7, true, now(), now()),
+  ('burgers', 'Burgers', '🍔', 8, true, now(), now()),
+  ('silog-meals', 'Silog Meals', '🍳', 9, true, now(), now()),
+  ('snacks', 'Snacks', '🍟', 10, true, now(), now())
+ON CONFLICT (id) DO NOTHING;
+
+-- =========================
+-- Seed: Chowfan Rice Toppings
+-- =========================
+INSERT INTO menu_items (
+  id, name, description, base_price, category, popular, available,
+  image_url, discount_price, discount_start_date, discount_end_date, discount_active,
+  created_at, updated_at
+) VALUES
+  (gen_random_uuid(), 'Tapa Egg Chow', '', 80.00, 'chowfan-rice-toppings', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Beef Tapa', '', 70.00, 'chowfan-rice-toppings', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Hotdog Chow', '', 50.00, 'chowfan-rice-toppings', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Shanghai Chow', '', 50.00, 'chowfan-rice-toppings', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Japanese Sausage Chow', '', 50.00, 'chowfan-rice-toppings', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Siomai Chow', '', 50.00, 'chowfan-rice-toppings', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Tocino Chow', '', 70.00, 'chowfan-rice-toppings', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Nuggets Chow', '', 50.00, 'chowfan-rice-toppings', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Ham Chow', '', 50.00, 'chowfan-rice-toppings', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Bacon Chow', '', 70.00, 'chowfan-rice-toppings', false, true, null, null, null, null, false, now(), now())
+ON CONFLICT DO NOTHING;
+
+-- =========================
+-- Seed: Hotdog Sandwich
+-- =========================
+INSERT INTO menu_items (
+  id, name, description, base_price, category, popular, available,
+  image_url, discount_price, discount_start_date, discount_end_date, discount_active,
+  created_at, updated_at
+) VALUES
+  (gen_random_uuid(), 'Overload Cheesy', '', 35.00, 'hotdog-sandwich', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Cheesy', '', 30.00, 'hotdog-sandwich', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Regular', '', 25.00, 'hotdog-sandwich', false, true, null, null, null, null, false, now(), now())
+ON CONFLICT DO NOTHING;
+
+-- =========================
+-- Seed: Burgers
+-- =========================
+INSERT INTO menu_items (
+  id, name, description, base_price, category, popular, available,
+  image_url, discount_price, discount_start_date, discount_end_date, discount_active,
+  created_at, updated_at
+) VALUES
+  (gen_random_uuid(), 'Classic Burger', '', 25.00, 'burgers', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Cheese Burger', '', 30.00, 'burgers', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Burger w/ Egg', '', 35.00, 'burgers', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Burger w/ Egg & Cheese', '', 45.00, 'burgers', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Burger w/ TLC', '', 65.00, 'burgers', false, true, null, null, null, null, false, now(), now())
+ON CONFLICT DO NOTHING;
+
+-- Pending items awaiting prices/decisions (not inserted):
+--   - Burgers: Egg Sandwich (needs price)
+--   - Silog Meals: Tapsilog, Hotsilog, Tocilog, Hamsilog, Footlongsilog,
+--                  Skinlesssilog, Malingsilog, Embosilog, Bacsilog
+--   - Snacks: Fries & Sip (flavors), Nacho, Siomai (flavors)
+
+-- =========================
+-- Seed: Silog Meals (placeholders, unavailable until priced)
+-- =========================
+INSERT INTO menu_items (
+  id, name, description, base_price, category, popular, available,
+  image_url, discount_price, discount_start_date, discount_end_date, discount_active,
+  created_at, updated_at
+) VALUES
+  (gen_random_uuid(), 'Tapsilog', '', 0.00, 'silog-meals', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Hotsilog', '', 0.00, 'silog-meals', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Tocilog', '', 0.00, 'silog-meals', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Hamsilog', '', 0.00, 'silog-meals', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Footlongsilog', '', 0.00, 'silog-meals', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Skinlesssilog', '', 0.00, 'silog-meals', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Malingsilog', '', 0.00, 'silog-meals', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Embosilog', '', 0.00, 'silog-meals', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Bacsilog', '', 0.00, 'silog-meals', false, true, null, null, null, null, false, now(), now())
+ON CONFLICT DO NOTHING;
+
+-- =========================
+-- Seed: Snacks (placeholders, unavailable until priced)
+-- =========================
+INSERT INTO menu_items (
+  id, name, description, base_price, category, popular, available,
+  image_url, discount_price, discount_start_date, discount_end_date, discount_active,
+  created_at, updated_at
+) VALUES
+  (gen_random_uuid(), 'Fries & Sip', '', 0.00, 'snacks', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Nacho', '', 0.00, 'snacks', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Siomai', '', 0.00, 'snacks', false, true, null, null, null, null, false, now(), now())
+ON CONFLICT DO NOTHING;
+
+-- Add flavor variations for Fries & Sip (price 0 until set)
+INSERT INTO variations (id, menu_item_id, name, price, created_at)
+SELECT 
+  gen_random_uuid(),
+  mi.id,
+  v.name,
+  v.price,
+  now()
+FROM menu_items mi
+CROSS JOIN (VALUES 
+  ('BBQ', 0.00),
+  ('Cheese', 0.00),
+  ('Chili BBQ', 0.00),
+  ('Sour Cream', 0.00)
+) AS v(name, price)
+WHERE mi.category = 'snacks' AND mi.name = 'Fries & Sip'
+ON CONFLICT DO NOTHING;
+
+-- Add flavor variations for Siomai (price 0 until set)
+INSERT INTO variations (id, menu_item_id, name, price, created_at)
+SELECT 
+  gen_random_uuid(),
+  mi.id,
+  v.name,
+  v.price,
+  now()
+FROM menu_items mi
+CROSS JOIN (VALUES 
+  ('Chicken', 0.00),
+  ('Pork', 0.00),
+  ('Japanese', 0.00),
+  ('Beef', 0.00)
+) AS v(name, price)
+WHERE mi.category = 'snacks' AND mi.name = 'Siomai'
+ON CONFLICT DO NOTHING;
+
+-- =========================
+-- Category: Rice Meal
+-- =========================
+INSERT INTO categories (id, name, icon, sort_order, active, created_at, updated_at) VALUES
+  ('rice-meal', 'Rice Meal', '🍛', 12, true, now(), now())
+ON CONFLICT (id) DO NOTHING;
+
+-- Seed: Rice Meal items
+INSERT INTO menu_items (
+  id, name, description, base_price, category, popular, available,
+  image_url, discount_price, discount_start_date, discount_end_date, discount_active,
+  created_at, updated_at
+) VALUES
+  (gen_random_uuid(), 'Liempo with Rice', '', 90.00, 'rice-meal', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Liempo with Rice and Egg', '', 100.00, 'rice-meal', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Fish Fillet with Rice', '', 70.00, 'rice-meal', false, true, null, null, null, null, false, now(), now())
+ON CONFLICT DO NOTHING;
+
+-- =========================
+-- Ice Coffee: Add additional drinks if missing
+-- =========================
+-- Insert missing ice coffee items at base price 49 (Small)
+INSERT INTO menu_items (
+  id, name, description, base_price, category, popular, available,
+  image_url, discount_price, discount_start_date, discount_end_date, discount_active,
+  created_at, updated_at
+)
+SELECT
+  gen_random_uuid(),
+  t.name,
+  '',
+  49.00,
+  'ice-coffee',
+  false,
+  true,
+  null,
+  null,
+  null,
+  null,
+  false,
+  now(),
+  now()
+FROM (
+  VALUES
+    ('Honey Americano'),
+    ('Vanilla Latte'),
+    ('Mocha Latte'),
+    ('Caramel Macchiato'),
+    ('Spanish Latte'),
+    ('Cappuccino'),
+    ('Matcha Coffee')
+) AS t(name)
+WHERE NOT EXISTS (
+  SELECT 1 FROM menu_items mi
+  WHERE mi.category = 'ice-coffee' AND lower(mi.name) = lower(t.name)
+);
+
+-- Ensure size variations exist for any newly added ice coffee items
+INSERT INTO variations (id, menu_item_id, name, price, created_at)
+SELECT 
+  gen_random_uuid(),
+  mi.id,
+  v.name,
+  v.price,
+  now()
+FROM menu_items mi
+JOIN (
+  SELECT id FROM menu_items WHERE category = 'ice-coffee'
+) ice ON ice.id = mi.id
+CROSS JOIN (VALUES 
+  ('Small', 0),
+  ('Medium', 10),
+  ('Large', 20)
+) AS v(name, price)
+LEFT JOIN variations existing
+  ON existing.menu_item_id = mi.id AND existing.name = v.name
+WHERE existing.id IS NULL;
+
+-- =========================
+-- Category: Non-coffee
+-- =========================
+INSERT INTO categories (id, name, icon, sort_order, active, created_at, updated_at) VALUES
+  ('non-coffee', 'Non-coffee', '🥤', 5, true, now(), now())
+ON CONFLICT (id) DO NOTHING;
+
+-- Seed: Non-coffee drinks (base price 49; insert only if missing)
+INSERT INTO menu_items (
+  id, name, description, base_price, category, popular, available,
+  image_url, discount_price, discount_start_date, discount_end_date, discount_active,
+  created_at, updated_at
+)
+SELECT
+  gen_random_uuid(),
+  t.name,
+  '',
+  49.00,
+  'non-coffee',
+  false,
+  true,
+  null,
+  null,
+  null,
+  null,
+  false,
+  now(),
+  now()
+FROM (
+  VALUES
+    ('Salted Caramel'),
+    ('Milkberry'),
+    ('Milkchoco'),
+    ('Matchalatte'),
+    ('Matchaberry')
+) AS t(name)
+WHERE NOT EXISTS (
+  SELECT 1 FROM menu_items mi
+  WHERE mi.category = 'non-coffee' AND lower(mi.name) = lower(t.name)
+);
+
+-- Ensure size variations exist for Non-coffee
+INSERT INTO variations (id, menu_item_id, name, price, created_at)
+SELECT 
+  gen_random_uuid(),
+  mi.id,
+  v.name,
+  v.price,
+  now()
+FROM menu_items mi
+JOIN (
+  SELECT id FROM menu_items WHERE category = 'non-coffee'
+) nc ON nc.id = mi.id
+CROSS JOIN (VALUES 
+  ('Small', 0),
+  ('Medium', 10),
+  ('Large', 20)
+) AS v(name, price)
+LEFT JOIN variations existing
+  ON existing.menu_item_id = mi.id AND existing.name = v.name
+WHERE existing.id IS NULL;
+
+-- Add: Avocado shake (Non-coffee) with specific sizes if missing
+INSERT INTO menu_items (
+  id, name, description, base_price, category, popular, available,
+  image_url, discount_price, discount_start_date, discount_end_date, discount_active,
+  created_at, updated_at
+)
+SELECT
+  gen_random_uuid(),
+  'Avocado shake',
+  '',
+  50.00,
+  'non-coffee',
+  false,
+  true,
+  null,
+  null,
+  null,
+  null,
+  false,
+  now(),
+  now()
+WHERE NOT EXISTS (
+  SELECT 1 FROM menu_items mi
+  WHERE mi.category = 'non-coffee' AND lower(mi.name) = lower('Avocado shake')
+);
+
+-- Create 16oz and 22oz variations for Avocado shake (22oz = 70 => +20)
+INSERT INTO variations (id, menu_item_id, name, price, created_at)
+SELECT 
+  gen_random_uuid(), mi.id, v.name, v.price, now()
+FROM menu_items mi
+CROSS JOIN (
+  VALUES ('16oz', 0.00), ('22oz', 20.00)
+) AS v(name, price)
+LEFT JOIN variations existing ON existing.menu_item_id = mi.id AND existing.name = v.name
+WHERE mi.category = 'non-coffee' AND lower(mi.name) = lower('Avocado shake') AND existing.id IS NULL;
+

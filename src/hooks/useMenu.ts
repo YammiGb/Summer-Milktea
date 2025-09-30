@@ -51,11 +51,14 @@ export const useMenu = () => {
           discountActive: item.discount_active || false,
           effectivePrice,
           isOnDiscount: isDiscountActive,
-          variations: item.variations?.map(v => ({
+          variations: (item.variations
+            ? [...item.variations].sort((a, b) => (a.price ?? 0) - (b.price ?? 0))
+            : []
+          ).map(v => ({
             id: v.id,
             name: v.name,
             price: v.price
-          })) || [],
+          })),
           addOns: item.add_ons?.map(a => ({
             id: a.id,
             name: a.name,
