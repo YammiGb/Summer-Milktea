@@ -15,7 +15,7 @@ INSERT INTO categories (id, name, icon, sort_order, active, created_at, updated_
   ('milktea', 'Milktea', '🧋', 1, true, now(), now()),
   ('fruit-soda', 'Fruit Soda', '🥤', 2, true, now(), now()),
   ('fruit-milk', 'Fruit Milk', '🥛', 3, true, now(), now()),
-  ('ice-coffee', 'Ice Coffee', '☕', 4, true, now(), now())
+  ('ice-coffee', 'Iced Coffee', '☕', 4, true, now(), now())
 ON CONFLICT (id) DO NOTHING;
 
 -- Insert Milktea items with correct base price (Small = 49)
