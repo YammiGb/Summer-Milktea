@@ -144,7 +144,15 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
             <h4 className="text-lg font-summer-bold text-summer-dark leading-tight flex-1 pr-2">{item.name}</h4>
             {item.variations && item.variations.length > 0 && (
               <div className="text-xs text-summer-muted bg-summer-warm-gray px-2 py-1 rounded-full whitespace-nowrap font-summer-regular">
-                {item.variations.length} sizes
+                {item.variations.length} {
+                  // Check if variations are sizes (Small/Medium/Large/oz) or flavors
+                  item.variations.some(v => 
+                    v.name.toLowerCase().includes('small') || 
+                    v.name.toLowerCase().includes('medium') || 
+                    v.name.toLowerCase().includes('large') ||
+                    v.name.toLowerCase().includes('oz')
+                  ) ? 'sizes' : 'flavors'
+                }
               </div>
             )}
           </div>
@@ -250,7 +258,14 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
               {/* Size Variations */}
               {item.variations && item.variations.length > 0 && (
                 <div className="mb-6">
-                  <h4 className="font-summer-bold text-summer-dark mb-4">Choose Size</h4>
+                  <h4 className="font-summer-bold text-summer-dark mb-4">
+                    {item.variations.some(v => 
+                      v.name.toLowerCase().includes('small') || 
+                      v.name.toLowerCase().includes('medium') || 
+                      v.name.toLowerCase().includes('large') ||
+                      v.name.toLowerCase().includes('oz')
+                    ) ? 'Choose Size' : 'Choose Flavor'}
+                  </h4>
                   <div className="space-y-3">
                     {item.variations.map((variation) => (
                       <label
