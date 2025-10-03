@@ -35,7 +35,7 @@ const SubNav: React.FC<SubNavProps> = ({ selectedCategory, onCategoryClick }) =>
                 <button
                   key={c.id}
                   onClick={() => onCategoryClick(c.id)}
-                  className={`px-4 py-2 rounded-full text-sm font-summer-medium transition-all duration-200 border-2 flex items-center space-x-2 ${
+                  className={`px-4 py-2 rounded-full text-sm font-summer-medium transition-all duration-200 border-2 flex items-center space-x-2 whitespace-nowrap ${
                     selectedCategory === c.id
                       ? 'bg-summer-orange text-white border-summer-orange shadow-lg'
                       : 'bg-summer-off-white text-summer-text border-summer-warm-gray hover:border-summer-orange hover:text-summer-orange'

@@ -24,11 +24,11 @@ INSERT INTO menu_items (
   image_url, discount_price, discount_start_date, discount_end_date, discount_active,
   created_at, updated_at
 ) VALUES
-  (gen_random_uuid(), 'Okinawa', 'Classic brown sugar milk tea with chewy tapioca pearls', 49.00, 'milktea', true, true, null, null, null, null, false, now(), now()),
-  (gen_random_uuid(), 'Wintermelon', 'Refreshing winter melon milk tea with a subtle sweetness', 49.00, 'milktea', true, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Okinawa', 'Classic brown sugar milk tea with chewy tapioca pearls', 49.00, 'milktea', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Wintermelon', 'Refreshing winter melon milk tea with a subtle sweetness', 49.00, 'milktea', false, true, null, null, null, null, false, now(), now()),
   (gen_random_uuid(), 'Cookies & Cream', 'Creamy milk tea blended with crushed cookies', 49.00, 'milktea', false, true, null, null, null, null, false, now(), now()),
   (gen_random_uuid(), 'Chocolate', 'Rich chocolate milk tea for chocolate lovers', 49.00, 'milktea', false, true, null, null, null, null, false, now(), now()),
-  (gen_random_uuid(), 'Matcha', 'Premium green tea powder with creamy milk', 49.00, 'milktea', true, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Matcha', 'Premium green tea powder with creamy milk', 49.00, 'milktea', false, true, null, null, null, null, false, now(), now()),
   (gen_random_uuid(), 'Taro', 'Purple taro root milk tea with a unique earthy flavor', 49.00, 'milktea', false, true, null, null, null, null, false, now(), now())
 ON CONFLICT DO NOTHING;
 
@@ -38,14 +38,14 @@ INSERT INTO menu_items (
   image_url, discount_price, discount_start_date, discount_end_date, discount_active,
   created_at, updated_at
 ) VALUES
-  (gen_random_uuid(), 'Four Season', 'Refreshing four-season fruit soda with mixed tropical flavors', 29.00, 'fruit-soda', true, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Four Season', 'Refreshing four-season fruit soda with mixed tropical flavors', 29.00, 'fruit-soda', false, true, null, null, null, null, false, now(), now()),
   (gen_random_uuid(), 'Blue Lemonade', 'Cool blue lemonade with a tangy citrus kick', 29.00, 'fruit-soda', false, true, null, null, null, null, false, now(), now()),
   (gen_random_uuid(), 'Green Apple', 'Crisp green apple soda with a refreshing taste', 29.00, 'fruit-soda', false, true, null, null, null, null, false, now(), now()),
-  (gen_random_uuid(), 'Lychee', 'Sweet and fragrant lychee fruit soda', 29.00, 'fruit-soda', true, true, null, null, null, null, false, now(), now()),
-  (gen_random_uuid(), 'Strawberry', 'Sweet strawberry soda bursting with berry flavor', 29.00, 'fruit-soda', true, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Lychee', 'Sweet and fragrant lychee fruit soda', 29.00, 'fruit-soda', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Strawberry', 'Sweet strawberry soda bursting with berry flavor', 29.00, 'fruit-soda', false, true, null, null, null, null, false, now(), now()),
   (gen_random_uuid(), 'Blueberry', 'Rich blueberry soda with antioxidant goodness', 29.00, 'fruit-soda', false, true, null, null, null, null, false, now(), now()),
   (gen_random_uuid(), 'Lemon', 'Classic lemon soda with a zesty citrus taste', 29.00, 'fruit-soda', false, true, null, null, null, null, false, now(), now()),
-  (gen_random_uuid(), 'Mango', 'Tropical mango soda with sweet summer vibes', 29.00, 'fruit-soda', true, true, null, null, null, null, false, now(), now())
+  (gen_random_uuid(), 'Mango', 'Tropical mango soda with sweet summer vibes', 29.00, 'fruit-soda', false, true, null, null, null, null, false, now(), now())
 ON CONFLICT DO NOTHING;
 
 -- Insert Fruit Milk items with correct base price (Small = 49)
@@ -54,9 +54,9 @@ INSERT INTO menu_items (
   image_url, discount_price, discount_start_date, discount_end_date, discount_active,
   created_at, updated_at
 ) VALUES
-  (gen_random_uuid(), 'Strawberry', 'Creamy strawberry milk with fresh berry flavor', 49.00, 'fruit-milk', true, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Strawberry', 'Creamy strawberry milk with fresh berry flavor', 49.00, 'fruit-milk', false, true, null, null, null, null, false, now(), now()),
   (gen_random_uuid(), 'Blueberry', 'Smooth blueberry milk with antioxidant benefits', 49.00, 'fruit-milk', false, true, null, null, null, null, false, now(), now()),
-  (gen_random_uuid(), 'Mango', 'Tropical mango milk with sweet summer taste', 49.00, 'fruit-milk', true, true, null, null, null, null, false, now(), now())
+  (gen_random_uuid(), 'Mango', 'Tropical mango milk with sweet summer taste', 49.00, 'fruit-milk', false, true, null, null, null, null, false, now(), now())
 ON CONFLICT DO NOTHING;
 
 -- Insert Ice Coffee items with correct base price (Small = 49)
@@ -65,10 +65,10 @@ INSERT INTO menu_items (
   image_url, discount_price, discount_start_date, discount_end_date, discount_active,
   created_at, updated_at
 ) VALUES
-  (gen_random_uuid(), 'Caramel Macchiato', 'Espresso with vanilla syrup, steamed milk, and caramel drizzle', 49.00, 'ice-coffee', true, true, null, null, null, null, false, now(), now()),
-  (gen_random_uuid(), 'Mocha', 'Rich chocolate and espresso blended with milk', 49.00, 'ice-coffee', true, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Caramel Macchiato', 'Espresso with vanilla syrup, steamed milk, and caramel drizzle', 49.00, 'ice-coffee', false, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Mocha', 'Rich chocolate and espresso blended with milk', 49.00, 'ice-coffee', false, true, null, null, null, null, false, now(), now()),
   (gen_random_uuid(), 'Salted Caramel', 'Sweet and salty caramel coffee with a smooth finish', 49.00, 'ice-coffee', false, true, null, null, null, null, false, now(), now()),
-  (gen_random_uuid(), 'Spanish Latte', 'Espresso with condensed milk for a creamy sweetness', 49.00, 'ice-coffee', true, true, null, null, null, null, false, now(), now()),
+  (gen_random_uuid(), 'Spanish Latte', 'Espresso with condensed milk for a creamy sweetness', 49.00, 'ice-coffee', false, true, null, null, null, null, false, now(), now()),
   (gen_random_uuid(), 'White Hazelnut', 'Smooth hazelnut coffee with white chocolate notes', 49.00, 'ice-coffee', false, true, null, null, null, null, false, now(), now()),
   (gen_random_uuid(), 'Butterscotch', 'Rich butterscotch coffee with a buttery sweetness', 49.00, 'ice-coffee', false, true, null, null, null, null, false, now(), now()),
   (gen_random_uuid(), 'Dark Hazelnut', 'Bold hazelnut coffee with deep roasted flavors', 49.00, 'ice-coffee', false, true, null, null, null, null, false, now(), now())
@@ -467,5 +467,165 @@ CROSS JOIN (
   VALUES ('16oz', 0.00), ('22oz', 20.00)
 ) AS v(name, price)
 LEFT JOIN variations existing ON existing.menu_item_id = mi.id AND existing.name = v.name
-WHERE mi.category = 'non-coffee' AND lower(mi.name) = lower('Avocado shake') AND existing.id IS NULL;
+ WHERE mi.category = 'non-coffee' AND lower(mi.name) = lower('Avocado shake') AND existing.id IS NULL;
+
+-- =========================
+-- Create Storage Bucket for Menu Images
+-- =========================
+-- Create the menu-images bucket if it doesn't exist
+INSERT INTO storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+VALUES (
+  'menu-images',
+  'menu-images',
+  true,
+  5242880, -- 5MB limit
+  ARRAY['image/jpeg', 'image/png', 'image/webp', 'image/gif']
+)
+ON CONFLICT (id) DO UPDATE SET
+  public = true,
+  file_size_limit = 5242880,
+  allowed_mime_types = ARRAY['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+
+-- Create storage policies for the menu-images bucket
+-- Policy for public read access
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_policies 
+    WHERE schemaname = 'storage' AND tablename = 'objects' AND policyname = 'Public read access for menu-images'
+  ) THEN
+    CREATE POLICY "Public read access for menu-images"
+      ON storage.objects
+      FOR SELECT
+      TO public
+      USING (bucket_id = 'menu-images');
+  END IF;
+END $$;
+
+-- Policy for authenticated users to upload
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_policies 
+    WHERE schemaname = 'storage' AND tablename = 'objects' AND policyname = 'Authenticated users can upload to menu-images'
+  ) THEN
+    CREATE POLICY "Authenticated users can upload to menu-images"
+      ON storage.objects
+      FOR INSERT
+      TO authenticated
+      WITH CHECK (bucket_id = 'menu-images' AND auth.role() = 'authenticated');
+  END IF;
+END $$;
+
+-- Policy for authenticated users to update
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_policies 
+    WHERE schemaname = 'storage' AND tablename = 'objects' AND policyname = 'Authenticated users can update menu-images'
+  ) THEN
+    CREATE POLICY "Authenticated users can update menu-images"
+      ON storage.objects
+      FOR UPDATE
+      TO authenticated
+      USING (bucket_id = 'menu-images' AND auth.role() = 'authenticated');
+  END IF;
+END $$;
+
+-- Policy for authenticated users to delete
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_policies 
+    WHERE schemaname = 'storage' AND tablename = 'objects' AND policyname = 'Authenticated users can delete menu-images'
+  ) THEN
+    CREATE POLICY "Authenticated users can delete menu-images"
+      ON storage.objects
+      FOR DELETE
+      TO authenticated
+      USING (bucket_id = 'menu-images' AND auth.role() = 'authenticated');
+  END IF;
+END $$;
+
+-- Additional policy to allow anonymous uploads (for admin dashboard without auth)
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_policies 
+    WHERE schemaname = 'storage' AND tablename = 'objects' AND policyname = 'Allow anonymous uploads to menu-images'
+  ) THEN
+    CREATE POLICY "Allow anonymous uploads to menu-images"
+      ON storage.objects
+      FOR INSERT
+      TO anon
+      WITH CHECK (bucket_id = 'menu-images');
+  END IF;
+END $$;
+
+-- =========================
+-- Fix RLS Policies for Admin Operations
+-- =========================
+-- Allow anonymous users to manage menu items (for admin dashboard)
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_policies 
+    WHERE tablename = 'menu_items' AND policyname = 'Anonymous users can manage menu items'
+  ) THEN
+    CREATE POLICY "Anonymous users can manage menu items"
+      ON menu_items
+      FOR ALL
+      TO anon
+      USING (true)
+      WITH CHECK (true);
+  END IF;
+END $$;
+
+-- Allow anonymous users to manage variations
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_policies 
+    WHERE tablename = 'variations' AND policyname = 'Anonymous users can manage variations'
+  ) THEN
+    CREATE POLICY "Anonymous users can manage variations"
+      ON variations
+      FOR ALL
+      TO anon
+      USING (true)
+      WITH CHECK (true);
+  END IF;
+END $$;
+
+-- Allow anonymous users to manage add-ons
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_policies 
+    WHERE tablename = 'add_ons' AND policyname = 'Anonymous users can manage add-ons'
+  ) THEN
+    CREATE POLICY "Anonymous users can manage add-ons"
+      ON add_ons
+      FOR ALL
+      TO anon
+      USING (true)
+      WITH CHECK (true);
+  END IF;
+END $$;
+
+-- Allow anonymous users to manage categories
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_policies 
+    WHERE tablename = 'categories' AND policyname = 'Anonymous users can manage categories'
+  ) THEN
+    CREATE POLICY "Anonymous users can manage categories"
+      ON categories
+      FOR ALL
+      TO anon
+      USING (true)
+      WITH CHECK (true);
+  END IF;
+END $$;
 

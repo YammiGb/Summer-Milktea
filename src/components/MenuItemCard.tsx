@@ -117,6 +117,11 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
           
           {/* Badges */}
           <div className="absolute top-3 left-3 flex flex-col gap-2">
+                  {item.popular && (
+                    <div className="bg-summer-orange text-white text-xs font-summer-bold px-3 py-1.5 rounded-full shadow-lg">
+                      POPULAR
+                    </div>
+                  )}
                   {item.isOnDiscount && item.discountPrice && (
                     <div className="bg-summer-orange-accent text-white text-xs font-summer-bold px-3 py-1.5 rounded-full shadow-lg animate-pulse">
                       SALE
