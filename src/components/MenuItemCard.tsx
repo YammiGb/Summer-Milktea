@@ -97,19 +97,21 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
     <>
       <div className={`bg-summer-off-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group animate-scale-in border border-summer-warm-gray ${!item.available ? 'opacity-60' : ''}`}>
         {/* Image Container with Badges */}
-        <div className="relative h-48 bg-gradient-to-br from-summer-cream to-summer-warm-gray">
+        <div className="relative h-48 bg-gradient-to-br from-summer-cream to-summer-warm-gray overflow-hidden">
           {item.image ? (
-            <img
-              src={item.image}
-              alt={item.name}
-              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-              loading="lazy"
-              decoding="async"
-              onError={(e) => {
-                e.currentTarget.style.display = 'none';
-                e.currentTarget.nextElementSibling?.classList.remove('hidden');
-              }}
-            />
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <img
+                src={item.image}
+                alt={item.name}
+                className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.parentElement?.nextElementSibling?.classList.remove('hidden');
+                }}
+              />
+            </div>
           ) : null}
           <div className={`absolute inset-0 flex items-center justify-center ${item.image ? 'hidden' : ''}`}>
             <div className="text-6xl opacity-20 text-summer-muted">🧋</div>
